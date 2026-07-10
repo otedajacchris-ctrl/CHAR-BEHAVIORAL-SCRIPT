@@ -1,0 +1,17 @@
+A fast anime-style combat system for Jamee with basic attack combos, skills, ultimate, dash, and movement controls. You can continue combos by clicking at the right time, while skills and ultimate cant be interrupted so it feels more smooth and clean. Jamee can still turn during attacks but cant move around, making the combat feel more controlled.
+
+
+
+## Scripts Included
+
+* **Camera.cs** – this one is for the camera that follows Jamee around. you can move it with mouse, zoom in and out with scroll wheel, and it kinda turns back behind Jamee if ur not moving the mouse. during the ultimate, the camera can still rotate but it stops following Jamee for a bit. **(Component: attach this to Main Camera)**
+
+* JAMEE ATTACK.cs – this is like the main combat script. it handles normal attacks, 5 attack combo, Q and E skills, R ultimate, right click dash and space jump. it also has cooldowns and combo reset so u cant just spam everything nonstop lol. **(Component: attach to Jamee/player object)**
+
+* JameeBasicAttackFinishedBehavior.cs – just checks if the basic attack animation is done already. when it finishes, it tells the combat script that Jamee isnt attacking anymore. **(Animator Behaviour: put this on the final attack state like Attack 5)**
+
+* **JameeComboBasicAttackBehavior.cs** – this checks if u click again near the end of the attack. if u did then it goes to the next combo attack without going back to idle, which makes it look more smooth i think. **(Animator Behaviour: put this on Attack 1, Attack 2, Attack 3 and Attack 4 states)**
+
+* **JameeMovement.cs** – handles WASD movement, walking, running, sprinting and turning Jamee. when attacking or doing skills u can still turn a bit but cant move around, so the animation doesnt get cut or look weird. **(Component: attach to Jamee/player object)**
+
+* **JameeSkillFinishedBehavior.cs** – checks when skill or ultimate animation is finished. after its done it unlocks the combat again so u can attack or use another skill. **(Animator Behaviour: put this on Skill 1, Skill 2 and Ultimate states)**
